@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.youranxue.domain.security.User;
-import com.youranxue.vo.NewTaskVO;
+import com.youranxue.vo.NewCourseVO;
 
 @RestController
 public class TestController {
@@ -20,7 +20,7 @@ public class TestController {
 
 	@PostMapping("/public")
 	@CrossOrigin
-	public NewTaskVO publicTestService(@RequestBody NewTaskVO newTask) {
+	public NewCourseVO publicTestService(@RequestBody NewCourseVO newTask) {
 		System.out.println(newTask.getClassName());
 		return newTask;
 	}

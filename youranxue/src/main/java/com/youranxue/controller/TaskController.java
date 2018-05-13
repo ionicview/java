@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.youranxue.domain.master.CodeListService;
 import com.youranxue.domain.master.CodeListService.Code;
 import com.youranxue.domain.service.BookService;
-import com.youranxue.domain.vo.Book;
+import com.youranxue.domain.service.CourseService;
 import com.youranxue.domain.vo.Chapter;
-import com.youranxue.vo.NewTaskVO;
+import com.youranxue.vo.NewCourseVO;
 
 @CrossOrigin
 @RestController
@@ -31,6 +31,9 @@ public class TaskController {
 	@Autowired
 	private CodeListService codeListService;
 
+	@Autowired
+	private CourseService courseService;
+
 	@ResponseBody
 	@RequestMapping(value = "/initNewTask", method = RequestMethod.GET)
 	public Map<String, List<Code>> initNewTask() {
@@ -41,7 +44,7 @@ public class TaskController {
 
 	@ResponseBody
 	@RequestMapping(value = "/newTask", method = RequestMethod.PUT)
-	public void newTask(@RequestBody NewTaskVO newTask) {
+	public void newTask(@RequestBody NewCourseVO newTask) {
 
 		System.out.println(newTask.getClassName());
 		System.out.println(newTask.getSubjectCode());
@@ -49,6 +52,7 @@ public class TaskController {
 		System.out.println(newTask.getTermCode());
 		System.out.println(newTask.getStudentCount());
 		System.out.println(newTask.getEndDate());
+		courseService.insertCourseTrn(newTask.toCourseTrn());
 	}
 
 	@ResponseBody
