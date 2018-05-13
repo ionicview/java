@@ -1,0 +1,28 @@
+app:
+  secret: the_secret
+  token-validity-in-seconds: 600
+  image-root: C:/Users/xjwan/git/spring-boot-youranxue/youranxue/src/
+  
+security:
+  ignored:
+    - none
+
+spring:
+  mvc:
+    favicon:
+      enabled: false
+  resources:
+    add-mappings: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/youranxue
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+
+logging:
+ level:
+  org.springframework: Info
+  level.root: debug
+ pattern:
+  console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

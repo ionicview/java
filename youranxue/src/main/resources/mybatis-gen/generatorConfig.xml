@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="C:\Users\xjwan\.m2\repository\org\postgresql\postgresql\42.1.4\postgresql-42.1.4.jar" />
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:postgresql://localhost:5432/youranxue" driverClass="org.postgresql.Driver" password="postgres" userId="postgres" />
+    <javaModelGenerator targetPackage="com.youranxue.model" targetProject="youranxue\generator\src\main\java" />
+    <sqlMapGenerator targetPackage="com.youranxue.mapper" targetProject="youranxue\generator\src\main\resources" />
+    <javaClientGenerator targetPackage="com.youranxue.mapper" targetProject="youranxue\generator\src\main\java" type="XMLMAPPER" />
+<!--     <table schema="youranxue" tableName="city"> -->
+        <table schema="youranxue" tableName="my_books">
+<!--       <columnOverride column="???" property="???" /> -->
+    </table>
+  </context>
+</generatorConfiguration>
