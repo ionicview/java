@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.youranxue.domain.master.impl.CodeListServiceImpl;
 import com.youranxue.domain.master.impl.CodeListServiceImpl.Code;
-import com.youranxue.domain.model.CourseTrn;
 import com.youranxue.domain.service.BookService;
 import com.youranxue.domain.service.CourseService;
 import com.youranxue.domain.vo.Chapter;
