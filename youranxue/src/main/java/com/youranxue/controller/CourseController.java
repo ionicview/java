@@ -13,46 +13,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.youranxue.domain.master.CodeListService;
-import com.youranxue.domain.master.CodeListService.Code;
+import com.youranxue.domain.master.impl.CodeListServiceImpl;
+import com.youranxue.domain.master.impl.CodeListServiceImpl.Code;
+import com.youranxue.domain.model.CourseTrn;
 import com.youranxue.domain.service.BookService;
 import com.youranxue.domain.service.CourseService;
 import com.youranxue.domain.vo.Chapter;
-import com.youranxue.vo.NewCourseVO;
+import com.youranxue.domain.vo.CourseViewVO;
+import com.youranxue.domain.vo.NewCourseVO;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/task")
-public class TaskController {
+@RequestMapping("/course")
+public class CourseController {
 
 	@Autowired
 	private BookService bookService;
 
 	@Autowired
-	private CodeListService codeListService;
+	private CodeListServiceImpl codeListService;
 
 	@Autowired
 	private CourseService courseService;
 
 	@ResponseBody
-	@RequestMapping(value = "/initNewTask", method = RequestMethod.GET)
-	public Map<String, List<Code>> initNewTask() {
+	@RequestMapping(value = "/initNewCourse", method = RequestMethod.GET)
+	public Map<String, List<Code>> initNewCourse() {
 
 		return codeListService.getAllCodeList();
 
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/newTask", method = RequestMethod.PUT)
-	public void newTask(@RequestBody NewCourseVO newTask) {
+	@RequestMapping(value = "/newCourse", method = RequestMethod.PUT)
+	public int newCourse(@RequestBody NewCourseVO newCourse) {
 
-		System.out.println(newTask.getClassName());
-		System.out.println(newTask.getSubjectCode());
-		System.out.println(newTask.getTeachTargetCode());
-		System.out.println(newTask.getTermCode());
-		System.out.println(newTask.getStudentCount());
-		System.out.println(newTask.getEndDate());
-		courseService.insertCourseTrn(newTask.toCourseTrn());
+		return courseService.insertCourseTrn(newCourse.toCourseTrn());
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/getAllCourse", method = RequestMethod.GET)
+	public List<CourseViewVO> getAllCourse() {
+
+		return courseService.getAllCourse();
+
 	}
 
 	@ResponseBody
