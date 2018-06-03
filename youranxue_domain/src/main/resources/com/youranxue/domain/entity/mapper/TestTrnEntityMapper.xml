@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.youranxue.domain.entity.mapper.TestTrnEntityMapper">
+  <select id="searchMyBookList" parameterType="int" resultType="com.youranxue.domain.model.TestTrn">
+    select
+       book_mst.BOOK_ID bookId,book_mst.BOOK_NAME bookName,img_mst.IMG_PATH coverImgPath
+      from
+            youranxue.course_trn course,
+            youranxue.code_mst
+            
+        
+	where
+	    my_books.BOOK_ID = book_mst.BOOK_ID and
+		book_mst.BOOK_ID = img_mst.IMG_RELEATION_ID
+    </select>
+</mapper>
