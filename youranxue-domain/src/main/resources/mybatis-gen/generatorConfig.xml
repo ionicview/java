@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<classPathEntry
+		location="C:\Users\Jose\.m2\repository\org\postgresql\postgresql\42.2.2\postgresql-42.2.2.jar" />
+	<context id="context1">
+		<jdbcConnection connectionURL="jdbc:postgresql://localhost:5432/youranxue"
+			driverClass="org.postgresql.Driver" password="postgres" userId="postgres" />
+		<javaModelGenerator targetPackage="com.youranxue.domain.model"
+			targetProject="youranxue-domain\autogen\src\main\java" />
+		<sqlMapGenerator targetPackage="com.youranxue.domain.mapper"
+			targetProject="youranxue-domain\autogen\src\main\resources" />
+		<javaClientGenerator targetPackage="com.youranxue.domain.mapper"
+			targetProject="youranxue-domain\autogen\src\main\java" type="XMLMAPPER" />
+
+<!-- 
+		<table schema="youranxue" tableName="city">
+			<columnOverride column="???" property="???" />
+			
+			</table>
+ -->	
+ <!--		
+		<table schema="youranxue" tableName="book_mst"/>			
+		<table schema="youranxue" tableName="chapter_mst"/>			
+		<table schema="youranxue" tableName="section_mst"/>
+		<table schema="youranxue" tableName="my_books"/>
+		<table schema="youranxue" tableName="img_mst"/> 
+		<table schema="youranxue" tableName="question"/>
+		<table schema="youranxue" tableName="school_mst"/> 
+ 		<table schema="youranxue" tableName="my_books"/> 
+		<table schema="youranxue" tableName="course_trn"/>-->
+		<table schema="youranxue" tableName="TEST_TRN"/>
+		<table schema="youranxue" tableName="TEST_GROUP_TRN"/>
+		<table schema="youranxue" tableName="course_trn"/>
+		
+	</context>
+</generatorConfiguration>
