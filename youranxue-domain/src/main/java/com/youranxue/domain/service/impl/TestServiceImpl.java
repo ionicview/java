@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.youranxue.domain.entity.TestTrnEntity;
 import com.youranxue.domain.model.TestTrn;
 import com.youranxue.domain.service.TestService;
+import com.youranxue.domain.vo.QuestionNumberVO;
 
 @Service
 public class TestServiceImpl implements TestService {
@@ -23,4 +24,15 @@ public class TestServiceImpl implements TestService {
 	public List<TestTrn> getAllTestByBookId(Integer bookId) {
 		return testTrnEntity.getAllTestByBookId(bookId);
 	}
+
+	public int autoNewTest(Integer sectionId, List<QuestionNumberVO> questionList) {
+		System.out.println("Section ID:" + sectionId);
+		questionList.forEach(questionNumber -> {
+
+			System.out.println(questionNumber.getQuestionCount());
+		});
+
+		return 0;
+	}
+
 }

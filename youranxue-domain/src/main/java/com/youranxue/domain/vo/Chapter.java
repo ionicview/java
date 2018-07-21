@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 public class Chapter {
-	private long chapterId;
+	private Integer chapterId;
 	private String chapterName;
 	private List<Section> sectionList = new ArrayList<>();
 

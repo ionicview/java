@@ -1,7 +1,7 @@
 app:
   secret: the_secret
   token-validity-in-seconds: 600
-  image-root: D:/work/yrx-backend-git/java/spring-boot-youranxue/youranxue-web/src/
+  image-root: /Users/wangqi/git/java1/youranxue-web/src/
 spring:
   mvc:
     favicon:
@@ -11,7 +11,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/youranxue
     username: postgres
-    password: postgres
+    password: postgers
     driverClassName: org.postgresql.Driver
 logging:
   level:
