@@ -13,10 +13,10 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.youranxue.AppConfig;
@@ -27,31 +27,35 @@ public class ImageController {
 
 	private static final String NO_IMAGE = "noImage.jpg";
 
+	private static final String CONTENT_TYPE_IMG = "image/jpeg;image/jpg;image/png;image/gif;";
+
+	private static final String CONTENT_TYPE_SVG = "image/svg+xml";
+
 	@Autowired
 	private AppConfig config;
 
 	@RequestMapping(value = "/imageDisplay/{imgFile:.*}", method = RequestMethod.GET)
-	public @ResponseBody byte[] showImage(@PathVariable String imgFile, HttpServletResponse response,
-			HttpServletRequest request) {
+	public void showImage(@PathVariable String imgFile, HttpServletResponse response, HttpServletRequest request) {
 
-		return show(imgFile, "", response, request);
+		show(imgFile, "", response, request);
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/imageDisplay/{outerFolder}/{imgFile:.*}", method = RequestMethod.GET)
-	public @ResponseBody byte[] showOuterImage(@PathVariable String imgFile, @PathVariable String outerFolder,
+	public void showOuterImage(@PathVariable String imgFile, @PathVariable String outerFolder,
 			HttpServletResponse response, HttpServletRequest request) {
 
-		return show(imgFile, outerFolder, response, request);
+		show(imgFile, outerFolder, response, request);
 	}
 
 	@RequestMapping(value = "/imageDisplay", method = RequestMethod.GET)
-	public @ResponseBody byte[] showNoImage(HttpServletResponse response, HttpServletRequest request) {
+	public void showNoImage(HttpServletResponse response, HttpServletRequest request) {
 
-		return show(NO_IMAGE, "", response, request);
+		show(NO_IMAGE, "", response, request);
 
 	}
 
-	private byte[] show(String imgFile, String outerFolder, HttpServletResponse response, HttpServletRequest request) {
+	private void show(String imgFile, String outerFolder, HttpServletResponse response, HttpServletRequest request) {
 		String imgSubFolder = "".equals(outerFolder) ? "resources/images/" : outerFolder;
 		String imgRootPath = config.getImageRoot().concat(imgSubFolder).concat("/");
 
@@ -66,28 +70,25 @@ public class ImageController {
 			file = new File(imgRootPath.concat(NO_IMAGE));
 		}
 
+		String contentType = isSvgFile(imgFile) ? CONTENT_TYPE_SVG : CONTENT_TYPE_IMG;
 		try {
 			byte[] img = FileUtils.readFileToByteArray(file);
 
-			if (!isSvgFile(imgFile)) {
-				InputStream is = new ByteArrayInputStream(img);
-				response.setContentType("image/jpeg;image/jpg;image/png;image/gif;image/svg");
-				String attachment = "inline; filename=" + file.getName();
-				response.setHeader("content-Disposition", attachment);
-				IOUtils.copy(is, response.getOutputStream());
-				response.flushBuffer();
-				is.close();
-			} else {
-				return img;
-			}
+			InputStream is = new ByteArrayInputStream(img);
+			response.setContentType(contentType);
+			String attachment = "inline; filename=" + file.getName();
+			response.setHeader("content-Disposition", attachment);
+			IOUtils.copy(is, response.getOutputStream());
+
+			response.flushBuffer();
+			is.close();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			
-		}
 
-		return null;
+		}
 	}
 
 	private boolean isSvgFile(String fileName) {

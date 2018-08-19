@@ -7,13 +7,14 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class QuestionShortAnswerVO {
-	long shortAnswerId;
-	String shortAnswerContent;
-	List<String> images = new ArrayList<>();
-	List<QuestionShortAnswerSubQuestionVO> subQuestionList;
-	QuestionAnswerVO answer;
-
+public class QuestionShortAnswerSubQuestionVO {
+	private long subQuestionId;
+	private int sequenceNo;
+	private String shortAnswerContent;
+	private List<String> images = new ArrayList<>();
+	
+	private QuestionAnswerVO answer;
+	
 	public void addImages(String... images) {
 		if (null == images || 0 == images.length) {
 			return;

@@ -9,9 +9,10 @@ spring:
   resources:
     add-mappings: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/youranxue
+#    url: jdbc:postgresql://localhost:5432/youranxue
+    url: jdbc:postgresql://18.191.36.17:5432/youranxue
     username: postgres
-    password: postgers
+    password: www.youranxue.com
     driverClassName: org.postgresql.Driver
 logging:
   level:
