@@ -86,6 +86,7 @@ public class TestController {
 		fillBlankVO.setQuestion(
 				"1. 如图，$\\triangle ABC$中，$\\angle A= 36^{\\circ}$，$\\angle B= 72^{\\circ}$，$\\angle ACB$的平分线交$AB$于$D$，则图中共有等腰三角形#BLANK#个.");
 		QuestionFillBlankBlankVO blankVO = new QuestionFillBlankBlankVO();
+		fillBlankVO.addImage("image/imageDisplay/imgouter/6.svg");
 		blankVO.setYourAnswer("3");
 		blankVO.setReadOnlyMode(true);
 		fillBlankVO.addBlank(blankVO);
@@ -141,7 +142,7 @@ public class TestController {
 		List<QuestionShortAnswerSubQuestionVO> subQuestionList = new ArrayList<>();
 		QuestionShortAnswerSubQuestionVO s1 = new QuestionShortAnswerSubQuestionVO();
 		s1.setShortAnswerContent("(1) 试判断函数 $f(x)$ 的零点个数；");
-		//s1.addImages("image/imageDisplay/imgouter/3.svg");
+		s1.addImages("image/imageDisplay/imgouter/5.svg");
 		
 		QuestionShortAnswerSubQuestionVO s2 = new QuestionShortAnswerSubQuestionVO();
 		s2.setShortAnswerContent("(2) 求 $f(x)$ 的极限值；");

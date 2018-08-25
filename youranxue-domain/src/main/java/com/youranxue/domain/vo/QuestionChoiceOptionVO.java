@@ -11,6 +11,7 @@ public class QuestionChoiceOptionVO {
 	private Integer sequenceNo;
 	private String choiceItem;
 	private List<String> imgList= new ArrayList<>();
+	private boolean isMySelection;
 	private boolean rightAnswerFlg;
 	public void addImage(String imgFilePath) {
 		this.imgList.add(imgFilePath);
