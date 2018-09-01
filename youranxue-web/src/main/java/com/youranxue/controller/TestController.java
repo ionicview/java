@@ -75,8 +75,19 @@ public class TestController {
 	public TestQuestionVO getAllTestQuestionsByTestId(@PathVariable Integer testId) {
 
 		TestQuestionVO testQuestionVO = new TestQuestionVO();
-		testQuestionVO.addQuestionChoice(dummyChoiceQuestion());
+		QuestionChoiceVO vo1 = dummyChoiceQuestion();
+		vo1.setQuestionNo(1);
+		vo1.setQuestionIdx(0);
+		testQuestionVO.addQuestionChoice(vo1);
+		
+		QuestionChoiceVO vo2 = dummyChoiceQuestion();
+		vo2.setQuestion("2. 如图，$\\triangle ABC$中，$\\angle A= 36^{\\circ}$，$\\angle B= 72^{\\circ}$，$\\angle ACB$的平分线交$AB$于$D$，则图中共有等腰三角形(　)");
+		vo2.setQuestionNo(2);
+		vo2.setQuestionIdx(1);
+		testQuestionVO.addQuestionChoice(vo2);
+		
 		testQuestionVO.addQuestionFillBlank(dummyFillBlankQuetion());
+		//testQuestionVO.addQuestionFillBlank(dummyFillBlankQuetion());
 		testQuestionVO.addQuestionShortAnswer(dummyShortAnswer());
 		return testQuestionVO;
 	}
@@ -84,7 +95,10 @@ public class TestController {
 	QuestionFillBlankVO dummyFillBlankQuetion() {
 		QuestionFillBlankVO fillBlankVO = new QuestionFillBlankVO();
 		fillBlankVO.setQuestion(
-				"1. 如图，$\\triangle ABC$中，$\\angle A= 36^{\\circ}$，$\\angle B= 72^{\\circ}$，$\\angle ACB$的平分线交$AB$于$D$，则图中共有等腰三角形#BLANK#个.");
+				"3. 如图，$\\triangle ABC$中，$\\angle A= 36^{\\circ}$，$\\angle B= 72^{\\circ}$，$\\angle ACB$的平分线交$AB$于$D$，则图中共有等腰三角形#BLANK#个.");
+		fillBlankVO.setQuestionNo(3);
+		fillBlankVO.setQuestionIdx(2);
+
 		QuestionFillBlankBlankVO blankVO = new QuestionFillBlankBlankVO();
 		fillBlankVO.addImage("image/imageDisplay/imgouter/6.svg");
 		blankVO.setYourAnswer("3");
@@ -101,7 +115,9 @@ public class TestController {
 
 		choiceVO.setQuestion(
 				"1. 如图，$\\triangle ABC$中，$\\angle A= 36^{\\circ}$，$\\angle B= 72^{\\circ}$，$\\angle ACB$的平分线交$AB$于$D$，则图中共有等腰三角形(　)");
-
+		choiceVO.setQuestionNo(1);
+		
+		
 		QuestionChoiceOptionVO optionVO1 = new QuestionChoiceOptionVO();
 		optionVO1.setChoiceId(1001);
 		optionVO1.setChoiceItem(" 2个");
@@ -136,8 +152,10 @@ public class TestController {
 	QuestionShortAnswerVO dummyShortAnswer() {
 		QuestionShortAnswerVO sav = new QuestionShortAnswerVO();
 		sav.setShortAnswerId(5001);
+		sav.setQuestionNo(4);
+		sav.setQuestionIdx(3);
 		sav.setShortAnswerContent(
-				"1. 已知函数 $f(x)=\\displaystyle \\lim_{n \\to \\infty}\\sum_{k=1}^n \\frac{1}{k^2}$");
+				"4. 已知函数 $f(x)=\\displaystyle \\lim_{n \\to \\infty}\\sum_{k=1}^n \\frac{1}{k^2}$");
 		sav.addImages("image/imageDisplay/imgouter/4.svg");
 		List<QuestionShortAnswerSubQuestionVO> subQuestionList = new ArrayList<>();
 		QuestionShortAnswerSubQuestionVO s1 = new QuestionShortAnswerSubQuestionVO();
