@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 public class QuestionShortAnswerVO {
 	long shortAnswerId;
+    private int questionNo;
+    private int questionIdx;
 	String shortAnswerContent;
 	List<String> images = new ArrayList<>();
 	List<QuestionShortAnswerSubQuestionVO> subQuestionList;

@@ -8,6 +8,8 @@ import lombok.Data;
 @Data
 public class QuestionChoiceVO {
 	private Long questionId;
+    private int questionNo;
+    private int questionIdx;
 	private String question;
 	private List<String> imgList = new ArrayList<>();
 	private List<QuestionChoiceOptionVO> choiceOptionList = new ArrayList<>();
